@@ -60,10 +60,17 @@ export const Directory = () => {
         const map = useMap();
 
         useEffect(() => {
+            // Force map to acknowledge container size with a small delay
+            const timer = setTimeout(() => {
+                map.invalidateSize();
+            }, 200);
+
             if (businesses.length > 0) {
                 const bounds = L.latLngBounds(businesses.map(b => [b.lat, b.lng]));
                 map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
             }
+
+            return () => clearTimeout(timer);
         }, [businesses, map]);
 
         return null;
@@ -72,7 +79,7 @@ export const Directory = () => {
     return (
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             {/* Mobile Filter Button */}
-            <div className="container" style={{ display: 'md:none', padding: '1rem', borderBottom: '1px solid var(--border)' }}>
+            <div className="container directory-mobile-toggle">
                 <button
                     onClick={() => setShowSidebar(!showSidebar)}
                     style={{
@@ -83,33 +90,20 @@ export const Directory = () => {
                         backgroundColor: 'white',
                         border: '1px solid var(--border)',
                         borderRadius: '8px',
-                        fontWeight: 500
+                        fontWeight: 600,
+                        color: 'var(--primary)',
+                        width: '100%',
+                        justifyContent: 'center'
                     }}
                 >
-                    <Filter size={18} /> Filters
+                    <Filter size={18} /> {showSidebar ? 'Close Filters' : 'Show Filters'}
                 </button>
             </div>
 
-            <div style={{
-                maxWidth: '1600px',
-                width: '100%',
-                margin: '0 auto',
-                padding: '2rem',
-                flex: 1,
-                display: 'flex',
-                gap: '2rem',
-                position: 'relative'
-            }}>
+            <div className="directory-layout">
+                <div className={`directory-sidebar ${showSidebar ? 'open' : ''}`}>
 
-                <div style={{
-                    width: '300px',
-                    flexShrink: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '2rem'
-                }} className="sidebar-filter">
-
-                    <div style={{
+                    <div className="filter-card" style={{
                         padding: '2rem',
                         borderRadius: 'var(--radius)',
                         backgroundColor: 'white',
@@ -230,7 +224,7 @@ export const Directory = () => {
                 </div>
 
                 {/* Main Content */}
-                <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
                     <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'end' }}>
                         <div>
                             <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--primary)' }}>
@@ -244,12 +238,7 @@ export const Directory = () => {
 
                     {viewMode === 'grid' ? (
                         <>
-                            <div style={{
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                                gap: '2rem',
-                                paddingBottom: '2rem'
-                            }}>
+                            <div className="business-card-grid">
                                 {filteredBusinesses.map(business => (
                                     <BusinessCard key={business.id} business={business} />
                                 ))}

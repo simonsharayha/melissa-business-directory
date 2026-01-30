@@ -1,13 +1,14 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Phone, Mail, Globe, MapPin, User } from 'lucide-react';
 import { useBusiness } from '../context/BusinessContext';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const BusinessDetails = () => {
     const { id } = useParams<{ id: string }>();
     const { businesses, incrementBusinessView } = useBusiness();
     const business = businesses.find(b => b.id === id);
     const hasViewed = useRef(false);
+    const [isMapInteractive, setIsMapInteractive] = useState(false);
 
     useEffect(() => {
         if (id && !hasViewed.current) {
@@ -132,15 +133,49 @@ export const BusinessDetails = () => {
                             height: '400px',
                             borderRadius: 'var(--radius)',
                             overflow: 'hidden',
-                            boxShadow: 'var(--shadow)'
-                        }}>
+                            boxShadow: 'var(--shadow)',
+                            position: 'relative'
+                        }}
+                            onMouseLeave={() => setIsMapInteractive(false)}
+                        >
                             <iframe
                                 width="100%"
                                 height="100%"
-                                style={{ border: 0 }}
+                                style={{ border: 0, pointerEvents: isMapInteractive ? 'all' : 'none' }}
                                 loading="lazy"
                                 src={`https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${business.lat},${business.lng}`}
                             ></iframe>
+                            {!isMapInteractive && (
+                                <div
+                                    onClick={() => setIsMapInteractive(true)}
+                                    style={{
+                                        position: 'absolute',
+                                        inset: 0,
+                                        backgroundColor: 'rgba(0,0,0,0.1)',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        cursor: 'pointer',
+                                        zIndex: 10
+                                    }}
+                                    title="Click to enable map interaction"
+                                >
+                                    <span style={{
+                                        backgroundColor: 'var(--primary)',
+                                        color: 'white',
+                                        padding: '0.75rem 1.5rem',
+                                        borderRadius: '50px',
+                                        fontWeight: 600,
+                                        boxShadow: 'var(--shadow-lg)',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        fontSize: '0.9rem'
+                                    }}>
+                                        <MapPin size={16} /> Click to Interact
+                                    </span>
+                                </div>
+                            )}
                         </div>
                         <div style={{ marginTop: '1rem', fontSize: '0.875rem', color: 'var(--text-light)' }}>
                             <p>Map view provided by OpenStreetMap</p>

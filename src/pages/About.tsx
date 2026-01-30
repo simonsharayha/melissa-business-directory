@@ -13,7 +13,7 @@ export const About = () => {
                 overflow: 'hidden'
             }}>
                 <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto' }}>
-                    <h1 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>Our Mission</h1>
+                    <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1.5rem', lineHeight: 1.1 }}>Our Mission</h1>
                     <p style={{ fontSize: '1.5rem', color: 'rgba(255,255,255,0.9)', lineHeight: 1.6 }}>
                         Connecting the community of Melissa, Texas through the power of local business.
                     </p>
@@ -21,7 +21,7 @@ export const About = () => {
             </div>
 
             <div className="container" style={{ padding: '6rem 1.5rem' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', marginBottom: '6rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center', marginBottom: '6rem' }}>
                     <div>
                         <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>Why We Started</h2>
                         <p style={{ fontSize: '1.125rem', lineHeight: 1.8, color: 'var(--text)', marginBottom: '1.5rem' }}>
@@ -47,7 +47,7 @@ export const About = () => {
 
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', color: 'var(--primary)' }}>Our Values</h2>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
                         <div className="glass" style={{ padding: '3rem 2rem', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-lg)' }}>
                             <div style={{
                                 backgroundColor: 'rgba(212, 175, 55, 0.1)',

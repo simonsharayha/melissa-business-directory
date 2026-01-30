@@ -65,7 +65,6 @@ export const BusinessCard: React.FC<BusinessCardProps> = ({ business }) => {
                         {business.category}
                     </div>
                 </div>
-
                 <div style={{ padding: '1.75rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '0.75rem' }}>
                         <h3 style={{
