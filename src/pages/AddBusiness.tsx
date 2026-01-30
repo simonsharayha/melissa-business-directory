@@ -304,6 +304,9 @@ export const AddBusiness = () => {
                                     style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid var(--border)', fontSize: '1rem' }}
                                     placeholder="https://"
                                 />
+                                <div style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: '#0f172a', backgroundColor: '#f0f9ff', padding: '0.75rem', borderRadius: '8px', border: '1px solid #bae6fd' }}>
+                                    Don't have a website? <a href="/website-services" target="_blank" style={{ color: '#0284c7', fontWeight: 600, textDecoration: 'underline' }}>We can build you one!</a> Check out our simple website package.
+                                </div>
                             </div>
                         </div>
 

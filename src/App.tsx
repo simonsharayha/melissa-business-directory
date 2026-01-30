@@ -13,6 +13,7 @@ import { AdminOverview } from './pages/admin/AdminOverview';
 import { AdminListings } from './pages/admin/AdminListings';
 import { AdminSettings } from './pages/admin/AdminSettings';
 import { EditBusiness } from './pages/admin/EditBusiness';
+import { WebsiteServices } from './pages/WebsiteServices';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/directory" element={<Directory />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/website-services" element={<WebsiteServices />} />
           </Route>
 
           {/* Admin Routes */}
