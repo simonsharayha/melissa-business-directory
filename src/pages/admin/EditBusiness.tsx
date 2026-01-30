@@ -48,7 +48,8 @@ export const EditBusiness = () => {
         } else {
             navigate('/admin/dashboard');
         }
-    }, [id, businesses, navigate]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id, businesses]); // Removed navigate to keep it stable, though navigate is usually stable.
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;

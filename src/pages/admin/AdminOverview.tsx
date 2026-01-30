@@ -2,6 +2,36 @@ import { BarChart3, TrendingUp, Users, Eye, ArrowUpRight } from 'lucide-react';
 import { useBusiness } from '../../context/BusinessContext';
 import { Link } from 'react-router-dom';
 
+const StatCard = ({ title, value, icon: Icon, color, trend }: any) => (
+    <div className="glass" style={{
+        padding: '1.5rem',
+        borderRadius: 'var(--radius)',
+        backgroundColor: 'white',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        boxShadow: 'var(--shadow-sm)'
+    }}>
+        <div>
+            <h3 style={{ color: 'var(--text-light)', fontSize: '0.875rem', marginBottom: '0.5rem', fontWeight: 500 }}>{title}</h3>
+            <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--primary)' }}>{value.toLocaleString()}</div>
+            {trend && (
+                <div style={{ fontSize: '0.8rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.25rem', marginTop: '0.25rem' }}>
+                    <TrendingUp size={14} /> {trend}
+                </div>
+            )}
+        </div>
+        <div style={{
+            backgroundColor: `${color}15`,
+            padding: '1rem',
+            borderRadius: '50%',
+            color: color
+        }}>
+            <Icon size={24} />
+        </div>
+    </div>
+);
+
 export const AdminOverview = () => {
     const { businesses, totalVisitors } = useBusiness();
 
@@ -15,36 +45,6 @@ export const AdminOverview = () => {
             views: b.views || 0,
             trend: 0
         }));
-
-    const StatCard = ({ title, value, icon: Icon, color, trend }: any) => (
-        <div className="glass" style={{
-            padding: '1.5rem',
-            borderRadius: 'var(--radius)',
-            backgroundColor: 'white',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            boxShadow: 'var(--shadow-sm)'
-        }}>
-            <div>
-                <h3 style={{ color: 'var(--text-light)', fontSize: '0.875rem', marginBottom: '0.5rem', fontWeight: 500 }}>{title}</h3>
-                <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--primary)' }}>{value.toLocaleString()}</div>
-                {trend && (
-                    <div style={{ fontSize: '0.8rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.25rem', marginTop: '0.25rem' }}>
-                        <TrendingUp size={14} /> {trend}
-                    </div>
-                )}
-            </div>
-            <div style={{
-                backgroundColor: `${color}15`,
-                padding: '1rem',
-                borderRadius: '50%',
-                color: color
-            }}>
-                <Icon size={24} />
-            </div>
-        </div>
-    );
 
     return (
         <div>
