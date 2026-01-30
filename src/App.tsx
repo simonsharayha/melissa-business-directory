@@ -1,26 +1,24 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Layout from './components/Layout'
-import Home from './pages/Home'
-import BusinessDetails from './pages/BusinessDetails'
-import AddBusiness from './pages/AddBusiness'
-import Directory from './pages/Directory'
-import About from './pages/About'
-import Contact from './pages/Contact'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { Layout } from './components/Layout'
+import { Home } from './pages/Home'
+import { BusinessDetails } from './pages/BusinessDetails'
+import { AddBusiness } from './pages/AddBusiness'
+import { Directory } from './pages/Directory'
+import { About } from './pages/About'
+import { Contact } from './pages/Contact'
 import { BusinessProvider } from './context/BusinessContext'
-import AdminLogin from './pages/admin/AdminLogin'
-import AdminLayout from './pages/admin/AdminLayout'
-import AdminOverview from './pages/admin/AdminOverview'
-import AdminListings from './pages/admin/AdminListings'
-import AdminSettings from './pages/admin/AdminSettings'
-import EditBusiness from './pages/admin/EditBusiness'
-import WebsiteServices from './pages/WebsiteServices'
-
-const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
+import { AdminLogin } from './pages/admin/AdminLogin'
+import { AdminLayout } from './pages/admin/AdminLayout'
+import { AdminOverview } from './pages/admin/AdminOverview'
+import { AdminListings } from './pages/admin/AdminListings'
+import { AdminSettings } from './pages/admin/AdminSettings'
+import { EditBusiness } from './pages/admin/EditBusiness'
+import { WebsiteServices } from './pages/WebsiteServices'
 
 function App() {
   return (
     <BusinessProvider>
-      <Router basename={basename}>
+      <Router>
         <Routes>
           {/* Public Routes wrapped in Layout for transitions */}
           <Route element={<Layout />}>
