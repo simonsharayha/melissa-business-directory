@@ -179,7 +179,7 @@ export const Home = () => {
             {/* Quick Categories */}
             <div className="container" style={{ padding: '3rem 1.5rem 0' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1.5rem' }}>
-                    {quickCategories.map((cat, index) => (
+                    {quickCategories.map((cat) => (
                         <div
                             key={cat.name}
                             onClick={() => navigate(`/directory?category=${encodeURIComponent(cat.name)}`)}

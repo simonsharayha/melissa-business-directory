@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useBusiness } from '../context/BusinessContext';
 import { BusinessCard } from '../components/BusinessCard';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { LayoutGrid, Map as MapIcon, Search, Filter, X } from 'lucide-react';
+import { LayoutGrid, Map as MapIcon, Search, Filter } from 'lucide-react';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 

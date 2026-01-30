@@ -1,4 +1,4 @@
-import { Save, Lock, Smartphone, Globe, Download, Upload } from 'lucide-react';
+import { Save, Lock, Globe, Download, Upload } from 'lucide-react';
 import { useState } from 'react';
 
 export const AdminSettings = () => {

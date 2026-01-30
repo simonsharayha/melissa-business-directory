@@ -1,5 +1,5 @@
 import { useBusiness } from '../../context/BusinessContext';
-import { Edit, Trash2, Plus, Search, Store, Clock, BarChart3, TrendingUp, User } from 'lucide-react';
+import { Edit, Trash2, Plus, Search, Store, Clock, BarChart3, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 

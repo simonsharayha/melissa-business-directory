@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useBusiness } from '../../context/BusinessContext';
 import { AddressAutocomplete } from '../../components/AddressAutocomplete';
-import { ArrowLeft, Upload, Check } from 'lucide-react';
+import { ArrowLeft, Upload } from 'lucide-react';
 
 export const EditBusiness = () => {
     const { id } = useParams<{ id: string }>();
